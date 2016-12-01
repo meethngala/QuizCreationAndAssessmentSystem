@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class contains the main method for the QCAS Application
  */
 package qcas;
 
@@ -12,17 +10,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
+ * This class contains the main method for the QCAS Application
  * @author Meeth
  */
 public class QCASAPPLICATION extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        
-        Scene scene = new Scene(root);
-        
+        // first page is the home page
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));        
+        Scene scene = new Scene(root);        
         stage.setScene(scene);
         stage.show();
     }

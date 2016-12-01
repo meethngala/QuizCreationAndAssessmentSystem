@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * This class controls the application page which appears right after the test
  */
 package qcas;
 
@@ -22,50 +20,63 @@ import qcasMode.Quiz;
 /**
  * FXML Controller class
  *
- * @author WalterWhite
+ * @author Khushboo Banwari
  */
 public class ContinueAfterTestPageController implements Initializable {
 
-    @FXML 
-    private Label TimeUpLabel ;
-    
-    @FXML 
-    private Label QuizUpLabel ;
+    // labels
+    @FXML
+    private Label TimeUpLabel;
+    @FXML
+    private Label QuizUpLabel;
     @FXML
     private Quiz quiz;
-    @FXML 
-    private Button continueButton ;
-    
+    // buttons
+    @FXML
+    private Button continueButton;
+
     /**
      * Initializes the controller class.
+     *@param url Reference of a URL Object
+     * @param rb Reference of a ResourceBundle Object
+     * 
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-    }    
-    
-    @FXML
-    public void setQuiz(Quiz quiz) 
-    {
-        QuizUpLabel.setVisible(true);
-        this.quiz = quiz;
-        
+
     }
+
+    /**
+     * Sets the current quiz with the argument passed (reference of a quiz
+     * object)
+     *
+     * @param quiz A reference of the object of a Quiz class
+     */
     @FXML
-    public void continueToResults() throws IOException, DocumentException
-    {        
+    public void setQuiz(Quiz quiz) {
+        QuizUpLabel.setVisible(true);    //quiz up label is made visible 
+        this.quiz = quiz;
+    }
+
+    /**
+     * This method is called when the continue button on the application is
+     * pressed
+     *
+     * @throws IOException
+     * @throws DocumentException
+     */
+    @FXML
+    public void continueToResults() throws IOException, DocumentException {
         FXMLLoader loader = new FXMLLoader();
+        // next page is the results page
         loader.setLocation(getClass().getResource("StudentTestResult.fxml"));
         Parent root = (Parent) loader.load();
-        StudentTestResultController studentTestResultController = loader.<StudentTestResultController> getController();
+        StudentTestResultController studentTestResultController = loader.<StudentTestResultController>getController();
         studentTestResultController.setQuiz(quiz);
-        studentTestResultController.getChart();
-        Stage stage = (Stage) continueButton.getScene().getWindow();
+        studentTestResultController.getChart(); // for displaying the chart
+        Stage stage = (Stage) continueButton.getScene().getWindow(); //set the stage 
         Scene scene = new Scene(root);
-        stage.setScene(scene);
+        stage.setScene(scene);//set the scene
         stage.show();
     }
-   
-   
-    
 }
