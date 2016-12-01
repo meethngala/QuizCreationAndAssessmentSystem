@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="QCAS.jnlp">
+  <information>
+    <title>QCAS</title>
+    <vendor>Meeth</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="QCAS.jar" size="6769143" download="eager" />
+    <jar href="lib/commons-lang3-3.1.jar" size="315805" download="eager" />
+    <jar href="lib/commons-logging-1.2-javadoc.jar" size="158448" download="eager" />
+    <jar href="lib/commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib/derby.jar" size="3104883" download="eager" />
+    <jar href="lib/derbyclient.jar" size="585704" download="eager" />
+    <jar href="lib/derbynet.jar" size="266471" download="eager" />
+    <jar href="lib/itextpdf-5.4.1.jar" size="1898417" download="eager" />
+    <jar href="lib/mysql-connector-java-5.1.40-bin.jar" size="990927" download="eager" />
+    <jar href="lib/opencsv-3.8.jar" size="64417" download="eager" />
+  </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="QCAS" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
+  <jfx:javafx-desc  width="800" height="600" main-class="qcas.QCASAPPLICATION"  name="QCAS" />
+  <update check="always"/>
+</jnlp>

@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Nov 26 20:52:59 ACDT 2016:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-0158-a028-d0ae-0000064bde80 
+on database directory /Users/paridhichoudhary/Documents/Java/Group Project/QCAS_Compiled/QCAS_Compiled/QuizDB with class loader sun.misc.Launcher$AppClassLoader@42a57993 
+Loaded from file:/Users/paridhichoudhary/Documents/Java/Group%20Project/QCAS_Compiled/QCAS_Compiled/dist/run1518930176/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_101-b13
+user.dir=/Users/paridhichoudhary/Documents/Java/Group Project/QCAS_Compiled/QCAS_Compiled
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.11.4
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
