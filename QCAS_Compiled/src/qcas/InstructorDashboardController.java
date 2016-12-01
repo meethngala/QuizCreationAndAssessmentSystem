@@ -56,15 +56,14 @@ import qcasMode.databaseConnection;
 
 /**
  * FXML Controller class
- *
+ * class to show the dashboard to the instructor
  * @author Meeth
  */
 public class InstructorDashboardController implements Initializable {
 
     @FXML
     private Slider slider;
-//    @FXML
-//    private BarChart Bar1;
+
     @FXML
     private LineChart Line1;
     @FXML
@@ -107,28 +106,28 @@ public class InstructorDashboardController implements Initializable {
 
     /**
      * Initializes the controller class.
+     * Initializes the dashboard controller
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
-//        comboData.add("Year");
-//       comboData.add("Month");
-//       comboData.add("Quarter");
-//       timeComboBox.setItems(comboData);
 
-            analysePerf("Month");
-            numberOfQuizzes("Month");
-            studentPie("Month");
-            makeBar();
-            displayStats();
+
+            analysePerf("Month");//method call for displaying student performance
+            numberOfQuizzes("Month"); // method call to display number of quizzes
+            studentPie("Month"); // method call to display percentage of students passed and failed
+            makeBar(); // method call to display the questions asked correctly and incorrectly 
+            displayStats();// method call to display statistics required to interpret the dahboard
             time = "Month";
         } catch (IOException ex) {
             Logger.getLogger(InstructorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(InstructorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+            // method call for slider to slide through different time periods
             slider.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable,
@@ -172,11 +171,12 @@ public class InstructorDashboardController implements Initializable {
                     time = "Year";
                     try {
                         try {
-                            //makeBar();
+                            
                             analysePerf("Year");
+                            numberOfQuizzes("Year");
                             studentPie("Year");
                             makeBar();
-                            //studentsPassFail();
+                            
                         } catch (SQLException ex) {
                             Logger.getLogger(InstructorDashboardController.class.getName()).log(Level.SEVERE, null, ex);
                         }
@@ -189,14 +189,8 @@ public class InstructorDashboardController implements Initializable {
 
     }
 
-    private void handleButtonAction1(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        Stage stage = (Stage) button.getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
+    
+// method to handle the logout button
     @FXML
     private void handleLogoutButton(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("TeacherLoginPage.fxml"));
@@ -205,7 +199,7 @@ public class InstructorDashboardController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+// method to handle the back button
     @FXML
     private void handleBackButton(MouseEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("TeacherAction.fxml"));
@@ -215,6 +209,14 @@ public class InstructorDashboardController implements Initializable {
         stage.show();
     }
     
+    /**
+     * method to print the report in pdf format
+     * @param paneImage
+     * @param document
+     * @return image 
+     * @throws BadElementException
+     * @throws IOException
+     */
     public Image pdfExport(WritableImage paneImage, Document document) throws BadElementException, IOException{
         
         ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
@@ -228,6 +230,11 @@ public class InstructorDashboardController implements Initializable {
         return newImage;
     }
    
+    /**
+     * method to export the image to pdf format
+     * @throws IOException
+     * @throws DocumentException
+     */
     @FXML
     public void exportToPdf() throws IOException, DocumentException {
         Document document = new Document();
@@ -257,23 +264,11 @@ public class InstructorDashboardController implements Initializable {
 
     }
 
-    private void makePie(/*MouseEvent event*/) throws IOException {
-        Pie1.setVisible(true);
-        Bar1.setVisible(false);
-        Line1.setVisible(false);
 
-        ObservableList<PieChart.Data> pieChartData
-                = FXCollections.observableArrayList(
-                        new PieChart.Data("Grapefruit", 13),
-                        new PieChart.Data("Oranges", 25),
-                        new PieChart.Data("Plums", 10),
-                        new PieChart.Data("Pears", 22),
-                        new PieChart.Data("Apples", 30));
-        final PieChart chart = new PieChart(pieChartData);
-        Pie1.setTitle("Student Performance");
-        Pie1.setData(pieChartData);
-    }
-
+    /**
+     * method to display statistics about students, quizzes and questions
+     * @throws SQLException
+     */
     public void displayStats() throws SQLException {
         ResultSet rs1;
         ResultSet rs2;
@@ -299,10 +294,15 @@ public class InstructorDashboardController implements Initializable {
 
     }
 
-    public void makeBar(/*MouseEvent event*/) throws IOException, SQLException {
-        //Pie1.setVisible(false);
+    /**
+     * method to represent the a stacked barchart for the number of questions answered correctly and incorrectly
+     * @throws IOException
+     * @throws SQLException
+     */
+    public void makeBar() throws IOException, SQLException {
+        
         Bar1.setVisible(true);
-        //Line1.setVisible(false);
+        
         ResultSet rs;
         Bar1.getData().clear();
         final CategoryAxis xAxis = new CategoryAxis();
@@ -310,7 +310,7 @@ public class InstructorDashboardController implements Initializable {
 
         Bar1.getXAxis().setLabel("Question ID");
         Bar1.getYAxis().setLabel("Frequency of Question");
-        //Bar1.setScaleY(50.0);
+        
 
         Bar1.getYAxis().setLayoutY(100);
         XYChart.Series series1 = new XYChart.Series();
@@ -339,17 +339,16 @@ public class InstructorDashboardController implements Initializable {
         Bar1.setTitle("Student Performance");
     }
 
-// Avg Student Performance Report for Instructor
+// method for Avg Student Performance Report for Instructor
     private void analysePerf(String s) throws IOException, SQLException {
-        //Pie1.setVisible(false);
-        //Bar1.setVisible(false);
+        
         Line1.setVisible(true);
         int i = 1;
         String case1 = s;
 
         try {
 
-            //case1 = (String) (timeComboBox.getSelectionModel().getSelectedItem());
+            
             if (case1.equals("Year")) {
                 i = 1;
             } else if (case1.equals("Quarter")) {
@@ -361,8 +360,7 @@ public class InstructorDashboardController implements Initializable {
             ResultSet rs;
             connection = new databaseConnection("jdbc:mysql://qcasrohan.caswkasqdmel.ap-southeast-2.rds.amazonaws.com:3306/QCASRohan?zeroDateTimeBehavior=convertToNull", "rohan", "rohantest");
             stmt = connection.getConnection().createStatement();
-            //final CategoryAxis xAxis = new CategoryAxis();
-            //final NumberAxis yAxis = new NumberAxis();
+            
 
             Line1.setTitle("Average Student Performance");
 
@@ -379,7 +377,7 @@ public class InstructorDashboardController implements Initializable {
                     Line1.getXAxis().setLabel("Month");
                     z = " select monthname(TESTTIME) Month from (SELECT * FROM RESULTS WHERE TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 year) AND NOW() order by TESTTIME) db group by monthname(TESTTIME)  order by TESTTIME;";
                     rs = stmt.executeQuery(z);
-//                XYChart.Series series1 = new XYChart.Series();
+
                     series0.setName("LEGEND");
                     while (rs.next()) {
                         series0.getData().add(new XYChart.Data(rs.getString("Month"), 0));
@@ -387,20 +385,20 @@ public class InstructorDashboardController implements Initializable {
 
                     String y1 = " select monthname(TESTTIME) Month,  avg(SCORE) AvgValue from (SELECT * FROM RESULTS WHERE LEVEL = 'E' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 year) AND NOW()) db group by monthname(TESTTIME) order by TESTTIME;";
                     rs = stmt.executeQuery(y1);
-//                XYChart.Series series1 = new XYChart.Series();
+
                     series1.setName("Easy");
                     while (rs.next()) {
                         series1.getData().add(new XYChart.Data(rs.getString("Month"), (int) (rs.getDouble("AvgValue") * 100)));
                     }
                     String y2 = "select monthname(TESTTIME) Month,  avg(SCORE) AvgValue from (SELECT * FROM RESULTS WHERE LEVEL = 'M' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 year) AND NOW()) db group by monthname(TESTTIME) order by TESTTIME;";
-//                XYChart.Series series2 = new XYChart.Series();
+
                     series2.setName("Medium");
                     rs = stmt.executeQuery(y2);
                     while (rs.next()) {
                         series2.getData().add(new XYChart.Data(rs.getString("Month"), (int) (rs.getDouble("AvgValue") * 100)));
                     }
                     String y3 = "select monthname(TESTTIME) Month,  avg(SCORE) AvgValue from (SELECT * FROM RESULTS WHERE LEVEL = 'H' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 year) AND NOW()) db group by monthname(TESTTIME) order by TESTTIME;";
-//                XYChart.Series series3 = new XYChart.Series();
+
                     series3.setName("Hard");
                     rs = stmt.executeQuery(y3);
                     while (rs.next()) {
@@ -412,7 +410,7 @@ public class InstructorDashboardController implements Initializable {
                     Line1.getXAxis().setLabel("Week Number of the year");
                     z = "select week(TESTTIME) Week from (SELECT * FROM RESULTS WHERE TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 quarter) AND NOW()  order by TESTTIME) db group by week(TESTTIME) order by TESTTIME;";
                     rs = stmt.executeQuery(z);
-//                XYChart.Series series1 = new XYChart.Series();
+
                     series0.setName("LEGEND");
                     while (rs.next()) {
                         series0.getData().add(new XYChart.Data(rs.getString("Week"), 0));
@@ -420,20 +418,20 @@ public class InstructorDashboardController implements Initializable {
 
                     String q1 = "select week(TESTTIME) Week, avg(SCORE) WeekAvg from (SELECT * FROM RESULTS WHERE LEVEL = 'E' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 quarter) AND NOW()) db group by week(TESTTIME) order by TESTTIME;";
                     rs = stmt.executeQuery(q1);
-//                XYChart.Series series1 = new XYChart.Series();
+
                     series1.setName("Easy");
                     while (rs.next()) {
                         series1.getData().add(new XYChart.Data(rs.getString("Week"), (int) (rs.getDouble("WeekAvg") * 100)));
                     }
                     String q2 = "select week(TESTTIME) Week, avg(SCORE) WeekAvg from (SELECT * FROM RESULTS WHERE LEVEL = 'M' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 quarter) AND NOW()) db group by week(TESTTIME) order by TESTTIME;";
-//                XYChart.Series series2 = new XYChart.Series();
+
                     series2.setName("Medium");
                     rs = stmt.executeQuery(q2);
                     while (rs.next()) {
                         series2.getData().add(new XYChart.Data(rs.getString("Week"), (int) (rs.getDouble("WeekAvg") * 100)));
                     }
                     String q3 = "select week(TESTTIME) Week, avg(SCORE) WeekAvg from (SELECT * FROM RESULTS WHERE LEVEL = 'H' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 quarter) AND NOW()) db group by week(TESTTIME) order by TESTTIME;";
-//                XYChart.Series series3 = new XYChart.Series();
+
                     series3.setName("Hard");
                     rs = stmt.executeQuery(q3);
                     while (rs.next()) {
@@ -446,7 +444,7 @@ public class InstructorDashboardController implements Initializable {
                     Line1.getXAxis().setLabel("Date of the Month");
                     z = "select dayofmonth(TESTTIME) Day from (SELECT * FROM RESULTS WHERE TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 month) AND NOW() order by TESTTIME) db group by date(TESTTIME) order by TESTTIME;";
                     rs = stmt.executeQuery(z);
-//                XYChart.Series series1 = new XYChart.Series();
+
                     series0.setName("LEGEND");
                     while (rs.next()) {
                         series0.getData().add(new XYChart.Data(rs.getString("Day"), 0));
@@ -456,18 +454,18 @@ public class InstructorDashboardController implements Initializable {
                     String m2 = "select dayofmonth(TESTTIME) Day, avg(SCORE) DailyAvg, LEVEL from (SELECT * FROM RESULTS WHERE LEVEL = 'M' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 month) AND NOW() ORDER BY TESTTIME) db group by date(TESTTIME) order by TESTTIME;";
                     String m3 = "select dayofmonth(TESTTIME) Day, avg(SCORE) DailyAvg, LEVEL from (SELECT * FROM RESULTS WHERE LEVEL = 'H' AND TESTTIME BETWEEN DATE_SUB(NOW(), INTERVAL 1 month) AND NOW() ORDER BY TESTTIME) db group by date(TESTTIME) order by TESTTIME;";
                     rs = stmt.executeQuery(m1);
-//                XYChart.Series series1 = new XYChart.Series();
+
                     series1.setName("Easy");
                     while (rs.next()) {
                         series1.getData().add(new XYChart.Data(rs.getString("Day"), (int) (rs.getDouble("DailyAvg") * 100)));
                     }
-//                XYChart.Series series2 = new XYChart.Series();
+
                     series2.setName("Medium");
                     rs = stmt.executeQuery(m2);
                     while (rs.next()) {
                         series2.getData().add(new XYChart.Data(rs.getString("Day"), (int) (rs.getDouble("DailyAvg") * 100)));
                     }
-//                XYChart.Series series3 = new XYChart.Series();
+
                     series3.setName("Hard");
                     rs = stmt.executeQuery(m3);
                     while (rs.next()) {
@@ -477,8 +475,7 @@ public class InstructorDashboardController implements Initializable {
 
             }
 
-            //series.nodeProperty().get().setStyle("-fx-stroke-width: 1px;");
-            //Scene scene = new Scene(lineChart, 800, 600);
+            
             Line1.getData().addAll(series0, series1, series2, series3);
 
             Node line = series0.getNode().lookup(".chart-series-line");
@@ -491,36 +488,33 @@ public class InstructorDashboardController implements Initializable {
                     (int) (color.getBlue() * 0));
             line.setStyle("-fx-stroke: rgba(" + rgb + ", 0.0);");
 
-//            Stage stage = new Stage();
-//            stage.setScene(scene);
-//            stage.show();
+
         } catch (Exception e) {
 
-            //FilePath.setText("Please select a time period");
+            
             System.out.println(e);
         }
     }
 
     private void topQuestionsBarGraph(String s) throws IOException, SQLException {
-        //Pie1.setVisible(false);
+       
         Bar1.setVisible(true);
-        //Line1.setVisible(true);
+        
         int i = 1;
         String case1 = s;
 
     }
 
-// Number of Quizzes over time
+// method for Number of Quizzes over time which takes a String argument defining the time peroid over which the graph should be plotted
     private void numberOfQuizzes(String s) throws IOException, SQLException {
         int i = 1;
-        //Pie1.setVisible(false);
-        //Bar1.setVisible(false);
+        
         Line2.setVisible(true);
         String case1 = s;
         int quiz_num = 0;
         try {
 
-            //case1 = (String) (timeComboBox.getSelectionModel().getSelectedItem());
+            
             if (case1.equals("Year")) {
                 i = 1;
             } else if (case1.equals("Quarter")) {
@@ -529,12 +523,10 @@ public class InstructorDashboardController implements Initializable {
                 i = 3;
             }
 
-//
+
             ResultSet rs;
             String z;
-//            final CategoryAxis xAxis = new CategoryAxis();
-//            final NumberAxis yAxis = new NumberAxis();
-//             LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
+
             Line2.setTitle("Number of Quizes over Time");
             Line2.getYAxis().setLabel("Average Scores");
             XYChart.Series series1 = new XYChart.Series();
@@ -572,28 +564,25 @@ public class InstructorDashboardController implements Initializable {
                     break;
             }
 
-//            Scene scene = new Scene(lineChart, 800, 600);
+
             Line2.getData().addAll(series1);
-//            Stage stage = new Stage();
-//            stage.setScene(scene);
-//            stage.show();
+
         } catch (Exception e) {
 
-            //FilePath.setText("Please select a time period");
+           
             System.out.println(e);
         }
     }
 
-    /*Number of Students Passing and Failing over Time*/
+    /* method for displaying Number of Students Passing and Failing over Time*/
     private void studentsPassFail(String s) throws IOException, SQLException {
-        //Pie1.setVisible(false);
-        //Bar1.setVisible(false);
+        
         Line1.setVisible(true);
         int i = 1;
         String case1 = "";
         try {
 
-            //case1 = (String) (timeComboBox.getSelectionModel().getSelectedItem());
+            
             if (case1.equals("Year")) {
                 i = 1;
             } else if (case1.equals("Quarter")) {
@@ -603,9 +592,7 @@ public class InstructorDashboardController implements Initializable {
             }
 
             ResultSet rs;
-//            final CategoryAxis xAxis = new CategoryAxis();
-//            final NumberAxis yAxis = new NumberAxis();
-//             LineChart<String, Number> lineChart = new LineChart<String, Number>(xAxis, yAxis);
+
             Line1.setTitle("Number of Students Passing and Failing over Time");
 
             XYChart.Series series0 = new XYChart.Series();
@@ -689,8 +676,7 @@ public class InstructorDashboardController implements Initializable {
 
             }
 
-            //series.nodeProperty().get().setStyle("-fx-stroke-width: 1px;");
-            //Scene scene = new Scene(lineChart, 800, 600);
+
             Line1.getData().addAll(series0, series1, series2);
 
             Node line = series0.getNode().lookup(".chart-series-line");
@@ -703,16 +689,19 @@ public class InstructorDashboardController implements Initializable {
                     (int) (color.getBlue() * 0));
             line.setStyle("-fx-stroke: rgba(" + rgb + ", 0.0);");
 
-//            Stage stage = new Stage();
-//            stage.setScene(scene);
-//            stage.show();
         } catch (Exception e) {
 
-            //FilePath.setText("Please select a time period");
+            
             System.out.println(e);
         }
     }
 
+    /**
+     * method to represent the percentage of students passing and failing
+     * @param s which is a String object representing either month, quarter or year
+     * @throws IOException
+     * @throws SQLException
+     */
     public void studentPie(String s) throws IOException, SQLException {
         Pie1.setVisible(true);
 
@@ -725,7 +714,7 @@ public class InstructorDashboardController implements Initializable {
         try {
 
             if (s.equals("Year")) {
-                //case1 = (String) (timeComboBox.getSelectionModel().getSelectedItem());
+             
                 i = 1;
             } else if (s.equals("Quarter")) {
                 i = 2;
@@ -800,7 +789,7 @@ public class InstructorDashboardController implements Initializable {
             Pie1.setData(pieChartData);
         } catch (Exception e) {
 
-            //FilePath.setText("Please select a time period");
+           
             System.out.println(e);
         }
     }
