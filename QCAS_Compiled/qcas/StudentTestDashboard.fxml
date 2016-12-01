@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="586.0" prefWidth="741.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.StudentTestDashboardController">
+   <children>
+      <ImageView fitHeight="572.0" fitWidth="745.0" layoutY="-4.0" opacity="0.5">
+         <image>
+            <Image url="@../images/grey-corporate-business-technology-background-free-34160.jpg" />
+         </image>
+      </ImageView>
+      <ComboBox id="TypeofQuestionComboBox" fx:id="studentTComboBox" layoutX="88.0" layoutY="223.0" prefHeight="25.0" prefWidth="172.0" promptText="Number of Questions" visibleRowCount="4" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="52.0" layoutY="299.0" prefHeight="47.0" prefWidth="324.0" text="Choose the difficulty level">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </Label>
+      <RadioButton id="EasyRadioButton" fx:id="RB1" layoutX="89.0" layoutY="346.0" mnemonicParsing="false" text="Easy">
+         <toggleGroup>
+            <ToggleGroup fx:id="studentTG" />
+         </toggleGroup></RadioButton>
+      <RadioButton id="MediumRadioButton" fx:id="RB2" layoutX="88.0" layoutY="372.0" mnemonicParsing="false" text="Medium" toggleGroup="$studentTG" />
+      <RadioButton id="HardRadioButton" fx:id="RB3" layoutX="88.0" layoutY="397.0" mnemonicParsing="false" text="Hard" toggleGroup="$studentTG" />
+      <Button id="startTestButton" fx:id="startTestButton" layoutX="470.0" layoutY="293.0" mnemonicParsing="false" onMouseClicked="#goToTest" prefHeight="47.0" prefWidth="181.0" style="-fx-background-color: #ADD8E6; -fx-background-radius: 10;" text="Start Test!">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="81.0" layoutY="180.0" prefHeight="27.0" prefWidth="324.0" text="Choose the number of questions">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="LogoutButton" layoutX="631.0" layoutY="35.0" mnemonicParsing="false" onMouseClicked="#logoutStudent" text="Logout">
+         <effect>
+            <InnerShadow color="#1789b2" />
+         </effect>
+      </Button>
+      <Button fx:id="BackButton" layoutX="560.0" layoutY="490.0" mnemonicParsing="false" onMouseClicked="#goBack" prefHeight="25.0" prefWidth="54.0" text="Back">
+         <effect>
+            <InnerShadow color="#3f9bb2" />
+         </effect>
+      </Button>
+      <RadioButton fx:id="RB4" layoutX="88.0" layoutY="424.0" mnemonicParsing="false" text="Mixed" />
+      <ImageView fitHeight="95.0" fitWidth="149.0" layoutX="15.0" layoutY="23.0">
+         <image>
+            <Image url="@../images/CMU-logo-stacked-black.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="unselectedParameterLabel" layoutX="446.0" layoutY="325.0" prefHeight="79.0" prefWidth="246.0" text="Please Select Number of Questions and Difficulty Level!" textAlignment="CENTER" textFill="#ab0c0c" visible="false" wrapText="true">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+   <stylesheets>
+      <URL value="@studentdashboard.css" />
+   </stylesheets>
+</AnchorPane>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #eef7f3;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.InstructorDashboardController">
+    
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="1200.0" opacity="0.5">
+         <image>
+            <Image url="@../images/grey-corporate-business-technology-background-free-34160.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="88.0" fitWidth="155.0" layoutX="21.0" layoutY="21.0">
+         <image>
+            <Image url="@../images/CMU-logo-stacked-black.png" />
+         </image>
+      </ImageView>
+      <AnchorPane id="lineChartAnchorPaneTR" fx:id="lineChartAnchorPaneTR" layoutX="811.0" layoutY="86.0">
+         <children>
+            <LineChart id="Line2" fx:id="Line2" prefHeight="288.0" prefWidth="379.0" style=" -fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;">
+               <xAxis>
+                  <CategoryAxis id="Line" fx:id="Line" side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </LineChart>
+         </children>
+      </AnchorPane>
+      <Label id="WelcomeLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="523.0" layoutY="4.0" prefHeight="63.0" prefWidth="548.0" style="-fx-background-color: #ADD8E6;" text="DASHBOARD" textFill="#1b1a1a">
+         <font>
+            <Font size="41.0" />
+         </font>
+      </Label>
+      <Button id="dashboardLogout" fx:id="dashboardLogout" layoutX="1093.0" layoutY="17.0" mnemonicParsing="false" onMouseClicked="#handleLogoutButton" prefHeight="37.0" prefWidth="81.0" text="Log out" textFill="#262525" />
+      <AnchorPane fx:id="pieChartAnchorPane" layoutX="432.0" layoutY="86.0">
+         <children>
+            <PieChart id="Pie1" fx:id="Pie1" prefHeight="288.0" prefWidth="379.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;" />
+         </children>
+      </AnchorPane>
+      <Button id="dashboardBack" fx:id="dashboardBack" layoutX="29.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#handleBackButton" prefHeight="55.0" prefWidth="163.0" text="Back" />
+      <Slider id="slider" fx:id="slider" layoutX="537.0" layoutY="686.0" prefHeight="15.0" prefWidth="548.0" />
+      <Label layoutX="29.0" layoutY="158.0" prefHeight="256.0" prefWidth="338.0" />
+      <AnchorPane id="lineChartAnchorPaneBR" fx:id="lineChartAnchorPaneBR" layoutX="811.0" layoutY="374.0">
+         <children>
+            <LineChart id="Line1" fx:id="Line1" prefHeight="279.0" prefWidth="379.0" style=" -fx-background-radius: 15; -fx-border-color: black; -fx-border-radius: 15;">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </LineChart>
+         </children>
+      </AnchorPane>
+      <AnchorPane id="stackedBarAnchorPane" fx:id="stackedBarAnchorPane" layoutX="432.0" layoutY="374.0">
+         <children>
+            <StackedBarChart id="Bar1" fx:id="Bar1" prefHeight="279.0" prefWidth="379.0" style="-fx-background-radius: 15; -fx-border-radius: 15; -fx-border-color: black;">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis autoRanging="false" side="LEFT" tickUnit="10.0" upperBound="50.0" />
+              </yAxis>
+            </StackedBarChart>
+         </children>
+      </AnchorPane>
+      <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="270.0" prefHeight="30.0" prefWidth="226.0" text="Total number of students :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" layoutX="66.0" layoutY="318.0" prefHeight="30.0" prefWidth="226.0" text="Total number of quizzes :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="67.0" layoutY="365.0" prefHeight="30.0" prefWidth="226.0" text="Total number of questions :">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <Label id="studentNumber" fx:id="studentNumber" layoutX="317.0" layoutY="212.0" />
+      <Label id="quizNumber" fx:id="quizNumber" layoutX="317.0" layoutY="259.0" />
+      <Label id="numberOfQuestions" fx:id="numberOfQuestions" layoutX="317.0" layoutY="307.0" />
+      <Label alignment="CENTER" layoutX="51.0" layoutY="176.0" prefHeight="37.0" prefWidth="338.0" text="Statistics">
+         <font>
+            <Font name="System Bold" size="50.0" />
+         </font></Label>
+      <Label layoutX="653.0" layoutY="662.0" prefHeight="17.0" prefWidth="324.0" text="Please slide the bar to see the graphs over a time period" />
+      <Label layoutX="608.0" layoutY="715.0" text="Last Month" />
+      <Label layoutX="797.0" layoutY="715.0" text="Last Quarter" />
+      <Label layoutX="1016.0" layoutY="715.0" text="Last Year" />
+      <Button fx:id="exportPDFButton" layoutX="236.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#exportToPdf" prefHeight="55.0" prefWidth="163.0" text="Export To PDF" />
+      <Label fx:id="pdfDownloadedLabel" contentDisplay="CENTER" layoutX="259.0" layoutY="552.0" text="PDF Downloaded!" visible="false">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import qcasMode.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="601.0" prefWidth="739.0" style="-fx-background-color: #eef7f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.TestController">
+   <children>
+      <AnchorPane layoutX="-1.0" layoutY="-1.0">
+         <children>
+            <Label alignment="CENTER" layoutX="427.0" layoutY="111.0" prefHeight="37.0" prefWidth="200.0" text="Time Remaining :  ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="questionNumber" layoutX="63.0" layoutY="197.0" prefHeight="27.0" prefWidth="200.0" text="Question: ">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font></Label>
+            <ImageView fitHeight="601.0" fitWidth="739.0" opacity="0.19">
+               <image>
+                  <Image url="@../images/grey-corporate-business-technology-background-free-34160.jpg" />
+               </image>
+            </ImageView>
+            <TextArea fx:id="TimerTextArea" editable="false" layoutX="605.0" layoutY="117.0" opacity="0.7" prefHeight="25.0" prefWidth="60.0" />
+            <Label fx:id="MCanswerLabel" layoutX="63.0" layoutY="181.0" prefHeight="20.0" prefWidth="561.0" text="The following question has only one correct answer." visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="FIBanswerLabel" layoutX="63.0" layoutY="181.0" prefHeight="20.0" prefWidth="561.0" text="The following question has one answer:  Enter text into the textbox." visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="MAanswerLabel" layoutX="63.0" layoutY="181.0" prefHeight="20.0" prefWidth="561.0" text="The following question has more than one correct answer." visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="TFanswerLabel" layoutX="63.0" layoutY="181.0" prefHeight="20.0" prefWidth="561.0" text="The following question has one answer: True/False" visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="131.0" fitWidth="200.0" layoutX="27.0" layoutY="26.0">
+               <image>
+                  <Image url="@../images/CMU-logo-stacked-black.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="submitButton" layoutX="300.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#handleSubmitAction" prefHeight="31.0" prefWidth="108.0" style="-fx-border-color: black; -fx-border-width: 2; -fx-border-style: solid;" text="Submit Test" />
+            <AnchorPane layoutX="93.0" layoutY="14.0" prefHeight="256.0" prefWidth="669.0">
+               <children>
+                  <Label fx:id="timeUpLabel" layoutX="14.0" layoutY="10.0" prefHeight="10.0" prefWidth="583.0" text="TIME UP!! PRESS SUBMIT TEST TO SAVE YOUR ANSWERS" textAlignment="CENTER" AnchorPane.bottomAnchor="23.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-7.0" AnchorPane.topAnchor="261.0">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPane" layoutX="62.0" layoutY="222.0" prefHeight="269.0" prefWidth="616.0">
+         <children>
+            <TextArea id="testTextArea" fx:id="testTextArea" editable="false" layoutY="6.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="72.0" prefWidth="599.0" promptText="description" style="-fx-border-color: #eef7f3;" wrapText="true" />
+            <RadioButton id="testRB1" fx:id="testRB1" layoutX="55.0" layoutY="111.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option A" wrapText="true">
+               <toggleGroup>
+                  <ToggleGroup fx:id="testTGRB" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton id="testRB2" fx:id="testRB2" layoutX="55.0" layoutY="148.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option B" toggleGroup="$testTGRB" wrapText="true" />
+            <RadioButton id="testRB3" fx:id="testRB3" layoutX="55.0" layoutY="181.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option C" toggleGroup="$testTGRB" wrapText="true" />
+            <RadioButton id="testRB4" fx:id="testRB4" layoutX="55.0" layoutY="219.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option D" toggleGroup="$testTGRB" wrapText="true" />
+            <CheckBox id="testCB3" fx:id="testCB3" layoutX="55.0" layoutY="181.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option C" wrapText="true" />
+            <CheckBox id="testCB4" fx:id="testCB4" layoutX="55.0" layoutY="219.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option D" wrapText="true" />
+            <CheckBox id="testCB1" fx:id="testCB1" layoutX="55.0" layoutY="111.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option A" wrapText="true" />
+            <CheckBox id="testCB2" fx:id="testCB2" layoutX="55.0" layoutY="148.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Option B" wrapText="true" />
+            <RadioButton id="testRBTF1" fx:id="testRBTF1" layoutX="158.0" layoutY="120.0" mnemonicParsing="false" text="True">
+               <toggleGroup>
+                  <ToggleGroup fx:id="testTGRBTF" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton id="testTFRB2" fx:id="testRBTF2" layoutX="157.0" layoutY="161.0" mnemonicParsing="false" text="False" toggleGroup="$testTGRBTF" />
+            <Hyperlink id="testPrev" fx:id="testPrev" layoutX="55.0" layoutY="260.0" onMouseClicked="#handlePrevAction" prefHeight="29.0" prefWidth="97.0" style="-fx-border-color: #000000;" text="Previous" visible="false">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink id="testNext" fx:id="testNext" layoutX="560.0" layoutY="260.0" onMouseClicked="#handleNextAction" prefHeight="29.0" prefWidth="60.0" style="-fx-border-color: #000000;" text="Next" visible="false" visited="true" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Hyperlink>
+            <FlowPane layoutX="388.0" layoutY="262.0" prefHeight="25.0" prefWidth="89.0" visible="false" />
+            <TextField fx:id="fibAnswerBlank" layoutX="232.0" layoutY="135.0" promptText="Enter answer here" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

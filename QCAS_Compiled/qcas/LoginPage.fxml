@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="LoginPane" fx:id="LoginButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="600.0" style="-fx-background-color: #eef7f3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.LoginPageController">
+   <children>
+      <TextField id="UsernameText" layoutX="268.0" layoutY="192.0" promptText="Username" />
+      <TextField id="PasswordText" layoutX="268.0" layoutY="258.0" promptText="Password" />
+      <Button id="LoginButton" fx:id="LoginButton" alignment="CENTER" layoutX="246.0" layoutY="388.0" mnemonicParsing="false" onMouseClicked="#goToStudentAction" prefHeight="25.0" prefWidth="97.0" text="Login" />
+      <Button id="SignUpButton" layoutX="417.0" layoutY="388.0" mnemonicParsing="false" text="Sign Up" />
+      <Label layoutX="403.0" layoutY="353.0" text="Not Registered?" />
+      <ImageView fitHeight="148.0" fitWidth="166.0" layoutX="31.0" layoutY="178.0">
+         <image>
+            <Image url="@../images/admin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="124.0" fitWidth="200.0" layoutX="229.0" layoutY="23.0">
+         <image>
+            <Image url="@../images/stdLogin.png" />
+         </image>
+      </ImageView>
+      <Button id="LoginButton1" layoutX="246.0" layoutY="388.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Login" visible="false" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="586.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.TeacherLoginPageController">
+   <children>
+      <ImageView fitHeight="579.0" fitWidth="755.0" layoutY="-1.0" opacity="0.5">
+         <image>
+            <Image url="@../images/grey-corporate-business-technology-background-free-34160.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane id="LoginPane" fx:id="LoginButton1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="489.0" prefWidth="616.0">
+         <children>
+            <TextField id="UsernameText" fx:id="userName" layoutX="269.0" layoutY="332.0" promptText="Username" />
+            <Button id="LoginButton" fx:id="LoginButton" alignment="CENTER" layoutX="405.0" layoutY="427.0" mnemonicParsing="false" onMouseClicked="#checkLogin" prefHeight="25.0" prefWidth="97.0" text="Login" />
+            <ImageView fitHeight="148.0" fitWidth="166.0" layoutX="260.0" layoutY="153.0">
+               <image>
+                  <Image url="@../images/admin.png" />
+               </image>
+            </ImageView>
+            <Button id="LoginButton1" layoutX="246.0" layoutY="388.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Login" visible="false" />
+            <Label fx:id="WrongCredLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="77.0" layoutY="301.0" prefHeight="17.0" prefWidth="246.0" text="LOGIN ERROR. WRONG CREDENTIALS!" textFill="#ff0808" visible="false">
+               <font>
+                  <Font name="Cambria Bold" size="12.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="password" layoutX="269.0" layoutY="376.0" promptText="Password" />
+            <ImageView fitHeight="95.0" fitWidth="149.0" layoutX="26.0" layoutY="25.0">
+               <image>
+                  <Image url="@../images/CMU-logo-stacked-black.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Button fx:id="BackButton" layoutX="625.0" layoutY="515.0" mnemonicParsing="false" onMouseClicked="#goBack" text="Back" />
+   </children>
+</AnchorPane>

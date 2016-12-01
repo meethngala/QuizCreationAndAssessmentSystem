@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="qcas.StudentDashboardController">
+    <stylesheets>
+        <URL value="@studentdashboard.css" />
+    </stylesheets>
+   <children>
+      <Button layoutX="48.0" layoutY="58.0" mnemonicParsing="false" prefHeight="199.0" prefWidth="217.0" text="Review Test">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <PieChart layoutX="232.0" layoutY="14.0" prefHeight="233.0" prefWidth="354.0" />
+      <Button layoutX="242.0" layoutY="294.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="132.0" text="Exit">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="199.0" fitWidth="217.0" layoutX="48.0" layoutY="58.0">
+         <image>
+            <Image url="@../../../../../Desktop/Review.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
