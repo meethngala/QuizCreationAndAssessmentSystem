@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="561.0" prefWidth="735.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qcas.SignupPageController">
+   <children>
+      <ImageView fitHeight="561.0" fitWidth="735.0" layoutY="-3.0" opacity="0.5">
+         <image>
+            <Image url="@../images/grey-corporate-business-technology-background-free-34160.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="SubmitButton" layoutX="116.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#Submit" text="Submit" />
+      <Label layoutX="185.0" layoutY="384.0" text="Re-enter Password">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="184.0" layoutY="218.0" text="First Name">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="185.0" layoutY="258.0" text="Last Name">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="186.0" layoutY="300.0" text="UserName">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <Label layoutX="188.0" layoutY="342.0" text="Password">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></Label>
+      <TextField fx:id="firstName" layoutX="348.0" layoutY="214.0" promptText="Enter first name" />
+      <TextField fx:id="lastName" layoutX="348.0" layoutY="254.0" promptText="Enter last name" />
+      <TextField fx:id="userName" layoutX="348.0" layoutY="296.0" promptText="Enter username" />
+      <Button fx:id="BackButton" layoutX="604.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#goBack" text="Back" />
+      <Label fx:id="UsernameExistsLabel" layoutX="23.0" layoutY="179.0" prefHeight="17.0" prefWidth="366.0" text="The username already exists! Create another username!" textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="YouAreRegisteredLabel" layoutX="29.0" layoutY="457.0" prefHeight="17.0" prefWidth="366.0" text="You are registered! Press continue to login. " textFill="RED" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="ContinueButton" layoutX="348.0" layoutY="492.0" mnemonicParsing="false" onMouseClicked="#continueToSignIn" text="Continue" visible="false" />
+      <PasswordField fx:id="password" layoutX="348.0" layoutY="338.0" promptText="Enter password" />
+      <PasswordField fx:id="password2" layoutX="348.0" layoutY="380.0" onKeyReleased="#checkPasswordMatch" promptText="Re-enter password" />
+      <Label fx:id="passwordsDontMatchLabel" layoutX="515.0" layoutY="384.0" prefHeight="17.0" prefWidth="155.0" text="Passwords don't match! " textFill="#f00000" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="95.0" fitWidth="149.0" layoutX="23.0" layoutY="19.0">
+         <image>
+            <Image url="@../images/CMU-logo-stacked-black.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="detailsCheckLabel" layoutX="184.0" layoutY="171.0" text="Please enter all details before pressing submit!" textFill="#c60505" visible="false">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
